@@ -40,5 +40,6 @@ if __name__ == "__main__":
     image_color[first_few_events['y'], first_few_events['x'], first_few_events['p']] = 255
 
     plt.imshow(image_color)
+    plt.imsave('foo.png', image_color)
     plt.show()
     

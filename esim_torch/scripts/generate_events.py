@@ -1,7 +1,9 @@
 import argparse
 from operator import sub
 import os
-import esim_torch
+# import esim_torch
+import esim_torch.esim_torch as esim_torch
+# import esim_torch.src.esim_torch.esim_torch as esim_torch
 import numpy as np
 import glob
 import cv2
@@ -10,7 +12,7 @@ import torch
 
 
 def is_valid_dir(subdirs, files):
-    return len(subdirs) == 1 and len(files) == 1 and "timestamps.txt" in files and "imgs" in subdirs
+    return len(subdirs) == 1 and len(files) >= 1 and "timestamps.txt" in files and "imgs" in subdirs
 
 
 def process_dir(outdir, indir, args):
@@ -26,8 +28,9 @@ def process_dir(outdir, indir, args):
     timestamps_ns = (timestamps * 1e9).astype("int64")
     timestamps_ns = torch.from_numpy(timestamps_ns).cuda()
 
-    image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.png")))
-    
+    # image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.png")))
+    image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.jpg")))
+
     pbar = tqdm.tqdm(total=len(image_files)-1)
     num_events = 0
 
