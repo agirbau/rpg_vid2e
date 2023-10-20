@@ -1,9 +1,7 @@
 import argparse
 from operator import sub
 import os
-# import esim_torch
-import esim_torch.esim_torch as esim_torch
-# import esim_torch.src.esim_torch.esim_torch as esim_torch
+import esim_torch
 import numpy as np
 import glob
 import cv2
