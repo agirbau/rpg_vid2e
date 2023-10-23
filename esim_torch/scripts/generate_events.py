@@ -26,8 +26,8 @@ def process_dir(outdir, indir, args):
     timestamps_ns = (timestamps * 1e9).astype("int64")
     timestamps_ns = torch.from_numpy(timestamps_ns).cuda()
 
-    # image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.png")))
-    image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.jpg")))
+    image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.png")))
+    # image_files = sorted(glob.glob(os.path.join(indir, "imgs", "*.jpg")))
 
     pbar = tqdm.tqdm(total=len(image_files)-1)
     num_events = 0
