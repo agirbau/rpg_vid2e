@@ -46,10 +46,10 @@ for seq_path in "${seqs_path_sorted[@]}"; do
   # --save_path /home/agirbau/work/event_cameras/data/rpg_vid2e/example/ev_representation
 
   ev_path="$seqs_evs_path"/"$seq_name"
-  img_path="$seqs_orig_path"/"$seq_name"/imgs
+  img_path="$seqs_ups_path"/"$seq_name"/imgs
   tstmp_path="$seqs_ups_path"/"$seq_name"
   save_path="$ev_repr_path"/"$seq_name"
 
-  "$python_evVision" "$evVision_path"/src/generate_event_frames.py --ev_path "$ev_path" --img_path "$img_path" --tstmp_path "$tstmp_path" --save_path "$save_path"
+  "$python_evVision" "$evVision_path"/src/generate_event_frames.py --ev_path "$ev_path" --img_path "$img_path" --tstmp_path "$tstmp_path" --save_path "$save_path" --render_orig
 
 done
