@@ -20,7 +20,6 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     python3 python3-pip python3-dev python3-setuptools \
     cmake build-essential git curl unzip \
     libopencv-dev libeigen3-dev libboost-all-dev python3-opencv \
-    ninja-build \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && pip3 install --upgrade pip
 
@@ -45,11 +44,12 @@ COPY ./esim_torch ./esim_torch
 # Clean any previous build cache that might confuse CMake
 RUN rm -rf esim_py/build && pip install ./esim_py/
 
-# Optional: edit esim_torch/setup.py to use dynamic sourcedir if needed
-RUN rm -rf esim_torch/build && pip install ./esim_torch/
+# This runs at the beginning of the build because we need the gpu to be available
+# RUN rm -rf esim_torch/build && pip install ./esim_torch/
 
 # Set the home directory and switch to the non-root user
-USER user
+# Upsample has some permissions issues if non-root
+#USER user
 WORKDIR /home/user/app
 
 # Default command
